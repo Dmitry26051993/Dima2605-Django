@@ -76,9 +76,7 @@ def add_user_v2(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
-
             data = form.cleaned_data
-
             name = data.get('name')
             lastname = data.get('lastname')
             age = data.get('age')
