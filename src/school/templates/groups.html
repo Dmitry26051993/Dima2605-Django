@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block title %} show groups {% endblock %}
+
+
+{% block content%}
+<h1>список групп</h1>
+<ul>
+    <li>
+    {% for group in groups%}
+        <a href="{% url 'students' group_id=group.id %}">{{ group.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
