@@ -1,12 +1,12 @@
-{% extends "base.html" %}
+{% extends "start.html" %}
 
 {% block title %} catdog {% endblock %}
 
 
 {% block content%}
 <form action="{% url 'catdog'%}" method="post">
-    <button type="submit" name="cat" class="btn btn-outline-info">i love cats</button>
+    <button type="submit" name="cat"  class="btn btn-outline-info">Я люблю котов</button>
 
-    <button type="submit" name="dog" class="btn btn-outline-info">i love dogs</button>
+    <button type="submit" name="dog"  class="btn btn-outline-info">Я люблю собак</button>
 </form>
 {% endblock %}
