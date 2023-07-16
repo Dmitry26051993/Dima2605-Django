@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from school.models import Group, Student
 
-
 def all_groups(request):
     data_dict_with_groups = Group.objects.all()
-    return render(request, 'groups.html',
+    return render(request, 'catdog.html',
                   context={'groups': data_dict_with_groups})
 
 
@@ -13,4 +12,3 @@ def all_students(request, group_id):
     groups_students = Student.objects.filter(group_id=group_id)
     return render(request, 'students.html',
                   context={'students': groups_students, 'group': group})
-# Create your views here.

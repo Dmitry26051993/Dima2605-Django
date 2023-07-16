@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'app_name_02',
     'django_extensions',
     'school',
+    'catdog',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [

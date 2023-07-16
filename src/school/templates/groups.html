@@ -5,11 +5,8 @@
 
 {% block content%}
 <h1>список групп</h1>
-<ul>
-    <li>
     {% for group in groups%}
-        <a href="{% url 'students' group_id=group.id %}">{{ group.name }}</a>
-    </li>
+        <h3>{{ group.name }}</h3>
     {% endfor %}
-</ul>
+<img src="https://cdn2.thecatapi.com/images/2nn.jpg">
 {% endblock %}

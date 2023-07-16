@@ -20,6 +20,8 @@ from app_name.views import get_data, two_pow, hello_admin, hello_guest, hello_us
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app_name.urls')),
+    path('app_name/', include('app_name.urls')),
     path('school/', include('school.urls')),
+    path('', include('catdog.urls')),
+
 ]
