@@ -5,7 +5,14 @@
 
 {% block content%}
 <h1>Случайная картинка</h1>
+<div class="jumbotron text-center big">
+<img class="img-fluid" src="{{ url }}" class="rounded" alt="New York">
 
-<img src="{{ url }}" class="mx-auto d-block">
+<form action="{% url 'save_catdog'%}" method="post">
+    {% csrf_token %}
+    <button type="submit" name="pet"  class="btn btn-outline-primary">Сохранить данную картинку</button>
+
+</form>
+
 
 {% endblock %}

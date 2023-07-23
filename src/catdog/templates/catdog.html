@@ -4,9 +4,12 @@
 
 
 {% block content%}
+<div class="jumbotron text-center big">
 <form action="{% url 'catdog'%}" method="post">
-    <button type="submit" name="cat"  class="btn btn-outline-info">Я люблю котов</button>
+    {% csrf_token %}
+    <button type="submit" name="cat" class="btn btn-outline-info">Я люблю котов</button>
 
-    <button type="submit" name="dog"  class="btn btn-outline-info">Я люблю собак</button>
+    <button type="submit" name="dog" class="btn btn-outline-info">Я люблю собак</button>
 </form>
+</div>
 {% endblock %}

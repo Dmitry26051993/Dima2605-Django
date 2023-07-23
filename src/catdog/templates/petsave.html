@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "start.html" %}
+
+{% block title %} catdog {% endblock %}
+
+
+{% block content%}
+<h1>Случайная картинка</h1>
+<div class="jumbotron text-center big">
+<img class="img-fluid" src="{{ url }}" alt="New York">
+
+<h2>Сохранить</h2>
+
+<form action="{% url 'send_mail'%}" method="post">
+    {% csrf_token %}
+    <h3>Email</h3>
+    <input type="email" name="mail">
+    <button type="submit" name="pet"  class="btn btn-outline-primary">Send link to this image</button>
+</form>
+
+{% endblock %}
