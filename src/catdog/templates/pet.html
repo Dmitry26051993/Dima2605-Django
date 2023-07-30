@@ -6,7 +6,7 @@
 {% block content%}
 <h1>Случайная картинка</h1>
 <div class="jumbotron text-center big">
-<img class="img-fluid" src="{{ url }}" class="rounded" alt="New York">
+<img class="img-fluid" src="{{ url }}"  class="rounded-circle" alt="Cinque Terre">
 
 <form action="{% url 'save_catdog'%}" method="post">
     {% csrf_token %}

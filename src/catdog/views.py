@@ -1,17 +1,16 @@
-import datetime
 
+from catdog.forms import PetFilterForm
 import requests
 from django.core.mail import send_mail
-from django.http import HttpResponse
 from django.shortcuts import render
-
 from catdog.models import AnimalImage
 from src.settings import URL_FOR_CATS, URL_FOR_DOGS, EMAIL_HOST_USER
 
 
 def catdog_view(request):
     if request.method == "GET":
-        return render(request, 'catdog.html')
+        data = {'form': PetFilterForm()}
+        return render(request, 'catdog.html', data)
     if request.method == "POST":
         request.session.set_expiry(30)
         if 'cat' in request.POST:
@@ -55,12 +54,26 @@ def save_catdog(request):
         data = {'url': data_for_write['url']}
         return render(request, 'petsave.html', context=data)
 
+
 def send_email(request):
+    url = request.POST.get('url_for_image')
+    mail_for_send = request.POST.get('mail')
     send_mail(
-        "Subject here",
-        "Вот это сообщение",
+        "Subject here - cool image",
+        f"Here is the link to image - {url}",
         EMAIL_HOST_USER,
-        ["martydm19932605@gmail.com"],
+        [mail_for_send],
         fail_silently=False,
     )
-    return HttpResponse('email sended')
+    return render(request, 'send_mail.html', {'url': url})
+
+
+def pet_filter(request):
+    if request.method == 'POST':
+        form = PetFilterForm(request.POST)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            pets = AnimalImage.objects.filter(species=data.get('pet'), type=data.get('type_img'))
+            print(f'hello')
+            return render(request, 'pet_filter.html', {"pets": pets})
